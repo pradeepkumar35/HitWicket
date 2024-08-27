@@ -404,9 +404,9 @@ MonoBehaviour:
   mcTransform: {fileID: 1293568789}
   scoreManager: {fileID: 1752136530}
   platformSize: {x: 9, y: 9}
-  minPulpitDestroyTime: 4
-  maxPulpitDestroyTime: 5
-  pulpitSpawnTime: 2.5
+  minPulpitDestroyTime: 1
+  maxPulpitDestroyTime: 2
+  pulpitSpawnTime: 0.5
 --- !u!4 &614821186
 Transform:
   m_ObjectHideFlags: 0

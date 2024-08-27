@@ -35,10 +35,15 @@ public class PlatformSpawner : MonoBehaviour
             float destroyTime = Random.Range(minPulpitDestroyTime, maxPulpitDestroyTime);
             yield return new WaitForSeconds(destroyTime);
 
+            // Spawn the new platform
             Vector3[] adjacentPositions = GetAdjacentPositions(currentPlatform.transform.position);
             Vector3 newPosition = adjacentPositions[Random.Range(0, adjacentPositions.Length)];
             newPlatform = CreatePlatform(newPosition);
 
+            // Wait for 2 seconds before starting the destruction process
+            yield return new WaitForSeconds(1.5f);
+
+            // Trigger the shrinking animation on the current platform
             Animator animator = currentPlatform.GetComponent<Animator>();
             if (animator != null)
             {
@@ -47,7 +52,10 @@ public class PlatformSpawner : MonoBehaviour
                 yield return new WaitForSeconds(animationDuration);
             }
 
+            // Destroy the current platform after the animation is done
             Destroy(currentPlatform);
+
+            // Update the reference to the new platform
             currentPlatform = newPlatform;
         }
     }
